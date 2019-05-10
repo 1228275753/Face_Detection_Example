@@ -1,0 +1,12 @@
+def load_file():
+
+	# 获取当前文件路径
+	current_path = os.path.abspath(__file__)
+	# 获取当前文件的父目录
+	father_path = os.path.abspath(os.path.dirname(current_path) + os.path.sep + ".")
+	# config.ini文件路径,获取当前目录的父目录的父目录与congig.ini拼接
+	config_file_path=father_path + '/haarcascade_frontalface_default.xml'
+	return config_file_path
+
+
+url = load_file()

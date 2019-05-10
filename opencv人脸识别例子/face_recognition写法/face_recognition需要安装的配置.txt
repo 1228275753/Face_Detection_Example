@@ -1,0 +1,2 @@
+安装face_recognition依赖包:
+sudo pip install face_recognition
