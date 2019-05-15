@@ -32,7 +32,7 @@ dt_z = 900
 # 基准时间
 t0 = time.time()
 # 设置十秒
-tenSeconds = 10
+tenSeconds = 15
 
 # 从摄像头获取画面
 cap = cv.VideoCapture(1)
@@ -69,7 +69,7 @@ def face_function():
         faceNum = 0
     if (faceNum >= 5):
         # 检测到人脸后,十秒内不再进行检测
-        dt_z = 10000
+        dt_z = 15000
         faceNum = 0
         # 调用倒计时
         seconds_close()
@@ -90,7 +90,7 @@ def greenToBg():
     img_back = img_back1
     global frame
     global frameBg
-    ret, frame = cap.read() # 逐帧采集视频流
+   
     #转换hsv
     hsv=cv.cvtColor(frame,cv.COLOR_BGR2HSV)
     #获取mask,mask1将绿屏变为白色
@@ -121,7 +121,7 @@ while(True):
         cv.imwrite("origin1.jpg",frame)
         cv.imwrite("finish1.jpg",frameBg)
         sys.exit()
-    
+    ret, frame = cap.read() # 逐帧采集视频流
     # 调用更换绿幕背景
     greenToBg()
 
