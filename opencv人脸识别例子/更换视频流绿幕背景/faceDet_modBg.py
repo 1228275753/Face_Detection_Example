@@ -18,11 +18,14 @@ def load_file():
 	current_path = os.path.abspath(__file__)
 	# 获取当前文件的父目录
 	father_path = os.path.abspath(os.path.dirname(current_path) + os.path.sep + ".")
+	global config_file_path
+	global back_path
 	# config.ini文件路径,获取当前目录的父目录的父目录与congig.ini拼接
 	config_file_path=father_path + '/haarcascade_frontalface_default.xml'
-	return config_file_path
-url = load_file()
-face_cascade = cv.CascadeClassifier(url)
+	back_path=father_path + '/back4.jpg'
+	#return config_file_path
+load_file()
+face_cascade = cv.CascadeClassifier(config_file_path)
 
 
 # 初始人脸数量定为0
@@ -41,7 +44,7 @@ cap.set(cv.CAP_PROP_FRAME_WIDTH, 1280)
 cap.set(cv.CAP_PROP_FRAME_HEIGHT, 720)
 
 # 绿幕背景图片
-img_back1=cv.imread('back2.jpeg')
+img_back1=cv.imread(back_path)
 # 改变背景图片分辨率
 img_back1 = cv.resize(img_back1,(1280,720))
 
