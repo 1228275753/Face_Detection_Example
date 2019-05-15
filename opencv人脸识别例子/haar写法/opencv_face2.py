@@ -32,13 +32,10 @@ dt_z = 900
 # 基准时间
 t0 = time.time()
 # 设置十秒
-tenSeconds = 10
+tenSeconds = 15
 # 从摄像头获取画面
 cap = cv.VideoCapture(0)
 
-# 从视频获取画面
-# videoPath = "/home/siiva/桌面/qwe.mp4"
-# cap = cv.VideoCapture(videoPath)
 # 改变视频分辨率
 cap.set(cv.CAP_PROP_FRAME_WIDTH, 1280)
 cap.set(cv.CAP_PROP_FRAME_HEIGHT, 720)
@@ -67,11 +64,11 @@ def face_function():
         faceNum = 0
     if (faceNum >= 5):
         # 检测到人脸后,十秒内不再进行检测
-        dt_z = 10000
+        dt_z = 15000
         faceNum = 0
         # 调用倒计时
         seconds_close()
-        r = requests.get("https://iva.siiva.com/activity/start_prompt?activity_id=155505493ie")
+        r = requests.get("https://iva.siiva.com/activity/start_prompt?activity_id=1555057493ie")
         
 
 # 10秒倒计时关闭py程序
@@ -89,10 +86,9 @@ while(True):
     ret, frame = cap.read() # 逐帧采集视频流
     gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY) # 转灰度图
     small_frame = cv.resize(gray, (0, 0), fx=0.25, fy=0.25)
-    # cv.namedWindow('window', 0)
-    # cv.resizeWindow('window', 1920, 1080)
+    cv.namedWindow('window', 0)
+    cv.resizeWindow('window', 1920, 1080)
     # cv.moveWindow('window', 0, 0)
-    # cv.imshow('window', frame)
     cv.waitKey(1)#设定毫秒后显示下一帧图像
     
     global t0
