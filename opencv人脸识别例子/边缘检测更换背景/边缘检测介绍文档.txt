@@ -1,0 +1,8 @@
+back_modify1.py:
+	二值化阀值处理,进行图片背景的切换
+
+back_modify3.py:
+	Sobel边缘检测算子进行边缘检测绘制(没有更换背景)
+
+back_modify1_video.py:
+	基于二值化处理的视频背景切换
