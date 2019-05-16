@@ -1,3 +1,5 @@
+开头,防止中文乱码:
+# -*- coding: utf-8 -*-
 1. 引入:
 	import cv2 as cv
 
