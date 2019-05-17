@@ -11,3 +11,5 @@
 	python
 	import cv2
 	cv2.__version__
+注意: 如果用apt安装opencv都失败的话,很大可能是apt版本太旧,需要更新,更新指令为
+	sudo apt-get update
