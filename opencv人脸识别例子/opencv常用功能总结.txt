@@ -26,7 +26,7 @@
         	break
 
 9. 释放摄像头,关闭所有窗口
-	cv.release()
+	cap.release()
 	cv.destroyAllWindows()
 
 10. 转灰度图:
