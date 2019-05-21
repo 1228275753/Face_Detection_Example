@@ -3,3 +3,9 @@ modify_bg1.py:
 
 faceDet_modBg.py:
 	1. 能够实现人脸识别加上绿幕视频流背景切换,并拍照
+
+pview.py:
+	1. 为解决识别和拍摄分开而生的,基于gphpto2将识别和拍摄放在一起的源代码
+
+canon_faceDet_modBg.py:
+	1. 在faceDet_modBg.py的基础上,结合pview.py, 抓取佳能相机预览图/来实现了人脸识别/和绿幕背景切换/
