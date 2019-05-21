@@ -1,0 +1,2 @@
+gstreamer,可以取代ffmpeg circular file
+gstreamer是高效采集图片视频的底层工具,功能类似ffmpeg
