@@ -8,3 +8,24 @@
 	sudo pip install gphoto2
 	这样安装,就可以在python中直接引用了,即
 	import gphoto2 as gp
+注意: 这两种引用的gphoto2写法也有很大的差别
+
+
+gphoto2常用指令:
+	1. 查看版本
+	gphoto2 -v
+	
+	2. 查看支持相机列表
+	gphoto2 --list-cameras
+
+	3. 查看已连接设备
+	gphoto2 --auto-detect
+	
+	4. 拍摄照片
+	gphoto2 --capture-image
+	
+	5. 拍摄照片并保存本地
+	gphoto2 --capture-image-and-download
+
+	6. 保存预览图
+	gphoto2 --capture-preview
