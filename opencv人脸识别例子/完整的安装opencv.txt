@@ -6,7 +6,7 @@
 	pip install sh
 4. 安装numpy
 	pip install numpy
-其他: 安装gphoto2(拍照), requests(发送请求), face_recognition(人脸识别)等等,如果用pip装不上就用apt-get装,总有一个能装上!
+其他: 安装gphoto2(拍照), requests(发送请求), Pillow(数字图像处理), face_recognition(人脸识别)等等,如果用pip装不上就用apt-get装,总有一个能装上!
 附: 查看opencv版本,在命令窗口输入如下指令:
 	python
 	import cv2

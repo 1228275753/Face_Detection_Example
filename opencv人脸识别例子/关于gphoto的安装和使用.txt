@@ -1,0 +1,10 @@
+1. 普通安装
+	sudo apt-get install gphoto2或者
+	sudo pip install gphoto2
+	这样安装,默认安装在系统中,在python中引用时,需要从系统中引用,即:
+	from sh imoprt gphoto2 as gp
+2. 在python中安装:
+	sudo apt-get install libgphoto2-dev
+	sudo pip install gphoto2
+	这样安装,就可以在python中直接引用了,即
+	import gphoto2 as gp
