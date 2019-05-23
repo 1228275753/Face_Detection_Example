@@ -29,3 +29,7 @@ gphoto2常用指令:
 
 	6. 保存预览图
 	gphoto2 --capture-preview
+
+当相机端口被占用不能拍照时:
+	ps aux|grep gphoto #会出现相机端口,例如3801
+	kill 3801 #关闭端口,就好了
