@@ -98,3 +98,9 @@
 	Scale_absX = cv.convertScaleAbs(x)  # convert 转换  scale 缩放
 	Scale_absY = cv.convertScaleAbs(y)
 	result = cv.addWeighted(Scale_absX, 0.5, Scale_absY, 0.5, 0)
+
+19. 让画面全屏显示:
+	cv.namedWindow('window', cv.WINDOW_NORMAL) #获取窗口名字
+	cv.resizeWindow('window', cv.WND_PROP_FULLSCREEN, cv.WINDOW_FULLSCREEN) #画面全屏
+	cv.setWindowProperty('window', cv.WND_PROP_FULLSCREEN, cv.WINDOW_FULLSCREEN) #窗口全屏
+	cv.imshow('window', frameBg)
