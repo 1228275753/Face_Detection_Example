@@ -10,5 +10,9 @@ pview.py:
 canon_faceDet_modBg.py:
 	1. 在faceDet_modBg.py的基础上,结合pview.py, 抓取佳能相机预览图/来实现了人脸识别/和绿幕背景切换/
 
+canon_faceDet_modBg.py2:
+	* 在原有基础上,删掉了多余代码
+	* 并且实现了随着相机预览图大小,自动改变背景图大小
+
 pview详细备注版.py:
 	1. 添加了很多自己理解的中文注释
