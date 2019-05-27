@@ -9,3 +9,12 @@ print(sound)
 # 直接运行这个文件,需要:python mp3.py audio_1.mp3
 # 如果在另一个python调用的话:
 # subprocess.Popen(["python","mp3.py","audio_1.mp3"])
+
+2. 大小不同的两张图片的叠加
+    imH = img.shape[0] #获取img的高
+    s_h = int(imH / 2) #定义一个二维码的宽高
+    img2 = cv.imread('qrcode.jpg') #获取二维码
+    img2 = cv.resize(img2,(s_h,s_h)) #设置二维码尺寸
+    img[0:s_h, 0:s_h] = img2
+    codeImgPath = 'imgs/code.jpg' #有二维码和人的图片
+    cv.imwrite(codeImgPath,img)
