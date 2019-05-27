@@ -104,3 +104,11 @@
 	cv.resizeWindow('window', cv.WND_PROP_FULLSCREEN, cv.WINDOW_FULLSCREEN) #画面全屏
 	cv.setWindowProperty('window', cv.WND_PROP_FULLSCREEN, cv.WINDOW_FULLSCREEN) #窗口全屏
 	cv.imshow('window', frameBg)
+	3399: 4句都要; 我的电脑: 只要134
+ 
+20. 图像翻转
+	frame = cv.flip(frame,1,dst=None) #水平镜像
+
+21. 在窗口中显示文字:
+	cv.putText(img,str(20-i),(0,50),cv.FONT_HERSHEY_PLAIN,4,(0,0,255),2)
+	参数:图片 显示的文字 左上角坐标 字体 字体大小 颜色 粗细
