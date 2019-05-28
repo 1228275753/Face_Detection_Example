@@ -1,3 +1,7 @@
+安装前先装:
+sudo apt-get update
+sudo apt-get utils
+
 1. 安装pip,方便后面用pip装其他依赖
 	sudo apt-get install python-pip(这样会在默认的python版本里装上pip,若想在python3里装pip,则改为python3-pip)
 2. 安装opencv 
@@ -24,3 +28,13 @@
 	cv2.__version__
 注意: 如果用apt安装opencv都失败的话,很大可能是apt版本太旧,需要更新,更新指令为
 	sudo apt-get update
+
+上海中心版本,需要安装的东西(装在python3的环境下):
+pip
+opencv
+sh
+gphoto2(全局装一个,Python3装一个)
+Pillow
+socketio(1.python-socketio 2.socket-client 3.socketIO_client_nexus)
+ffmpeg
+playsound
