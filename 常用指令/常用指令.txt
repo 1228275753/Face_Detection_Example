@@ -1,0 +1,10 @@
+*修改当前文件夹以及内部所有文件权限为"r,b,w"
+	sudo chmod 777 *
+
+*git查看当前分支
+	git branch
+
+*git切换分支
+	git checkout newMaster
+
+
