@@ -18,3 +18,19 @@ print(sound)
     img[0:s_h, 0:s_h] = img2
     codeImgPath = 'imgs/code.jpg' #有二维码和人的图片
     cv.imwrite(codeImgPath,img)
+
+3. 按规定大小给图片等比例缩小,多余的剪切掉,并输出
+# 修改相片大小
+def capture_and_resize_image():
+    infile = imgPath #读取照片的位置及其名字
+    outfile = 'imgs/outImg.jpg' #修改后照片储存位置和名字
+    pic = cv.imread(infile)
+    h = pic.shape[0] #照片的高
+    w = pic.shape[1] #照片的宽
+    s_h = 2160 #标准的高
+    s_w = w * s_h / h #标准的宽
+    dis_w = s_w - 2880 #多余的宽的长度
+    half_dis_w = dis_w / 2
+    img = cv.resize(pic,(int(s_w),int(s_h))) #缩小后的图片
+    s_img = img[0:int(s_h), int(half_dis_w):int(half_dis_w + 2880)] #完成切割后的标准图片
+    cv.imwrite(outfile,s_img) #输出新照片保存
