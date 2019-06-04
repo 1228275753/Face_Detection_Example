@@ -7,4 +7,6 @@
 *git切换分支
 	git checkout newMaster
 
-
+* 获取当前文件路径的方式
+	1. os.path.abspath(__file__)
+	2. os.getcwd()

@@ -34,3 +34,15 @@ def capture_and_resize_image():
     img = cv.resize(pic,(int(s_w),int(s_h))) #缩小后的图片
     s_img = img[0:int(s_h), int(half_dis_w):int(half_dis_w + 2880)] #完成切割后的标准图片
     cv.imwrite(outfile,s_img) #输出新照片保存
+
+4. 图形矩阵行列转置
+	frame1 = frame1.transpose(1,0,2) #对图形矩阵的行列进行转置
+
+5. 图形矩阵上下翻转
+	frame1 = frame1[::-1] #对图形矩阵进行上下翻转
+
+6. 图形矩阵旋转
+	frame1 = np.rot90(frame1, 1) #逆时针90度
+	frame1 = np.rot90(frame1, -1) #顺时针90度
+	frame1 = np.rot90(frame1, 2) #逆时针180度
+	frame1 = np.rot90(frame1, 3) #逆时针270度
