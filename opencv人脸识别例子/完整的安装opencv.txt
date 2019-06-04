@@ -33,7 +33,9 @@ sudo apt-get utils
 pip
 opencv
 sh
+numpy
 gphoto2(全局装一个,Python3装一个)
+requests
 Pillow
 socketio(1.python-socketio 2.socket-client 3.socketIO_client_nexus)
 ffmpeg
