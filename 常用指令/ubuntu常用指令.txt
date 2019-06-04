@@ -1,0 +1,25 @@
+创建文件夹:
+	sudo mkdir xxx
+
+删除文件(夹):
+	sudo rm -rf fileName
+
+查看当前绝对路径:
+	pwd
+
+移动文件到/newPath:
+	sudo mv fileName /newPath
+
+创建文件:
+	touch fileName.txt
+
+查看电脑所有python版本:
+	/usr/local/lib $ ls -l | grep python
+
+查看python默认指向:
+	/usr/bin $ ls -l | grep python
+
+修改python默认指向(一般默认指向python2.7):
+	cd /usr/bin
+	sudo rm python
+	sudo ln -s /usr/bin/python3.6 /usr/bin/python #python3.6为你电脑最新python版本,切记,此法慎用
