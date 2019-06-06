@@ -54,3 +54,14 @@ def capture_and_resize_image():
     cv.namedWindow('imgWindow', cv.WINDOW_NORMAL) #获取窗口名字
     cv.resizeWindow('imgWindow', cv.WND_PROP_FULLSCREEN, cv.WINDOW_FULLSCREEN)
     cv.setWindowProperty('imgWindow', cv.WND_PROP_FULLSCREEN, cv.WINDOW_FULLSCREEN)
+
+8. numpy板块
+	* 一般情况下,图片矩阵默认类型为 unit8 ;
+	* 查看矩阵数据类型: arr.dtype
+	* 比如arr为float64类型矩阵,将它转化为unit8:
+		np.uint8(arr)
+	* 创建一个0矩阵:(10行20列,每组3个数字；同理,1矩阵为"np.ones")
+		np.zeros(shape = (10, 20, 3))
+	* 创建一个255矩阵(1矩阵*255)
+		np.ones(shape = (10, 20, 3)) * 255
+	
