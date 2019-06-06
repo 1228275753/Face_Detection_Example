@@ -49,6 +49,7 @@ def capture_and_resize_image():
 
 7. 将多个图像集合在一行里,在一个窗口显示(每个图像大小要一致,并最好结合全屏窗口一起使用,否则每张图像都显示原图大小)
 	frames = np.hstack([frame1,frame2,frame3])
+	(hastack: 水平叠加；vstack:垂直叠加)
 (另附全屏代码:
     cv.namedWindow('imgWindow', cv.WINDOW_NORMAL) #获取窗口名字
     cv.resizeWindow('imgWindow', cv.WND_PROP_FULLSCREEN, cv.WINDOW_FULLSCREEN)
