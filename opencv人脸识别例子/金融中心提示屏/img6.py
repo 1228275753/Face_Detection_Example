@@ -20,18 +20,23 @@ def muti_imgs():
     global imgList, ewmList
     imgList = []
     ewmList = []
-    allImg = requests.get("https://iva.siiva.com/admin/task/list?project_id=pr_1539766931&limit=6&state=complete")
-    for i in range(0, 6):
-        activity_id = json.loads(allImg.text).get('list')[i].get('activity_id')
-        taskId = json.loads(allImg.text).get('list')[i].get('task').get('taskId')
-        # 图片
-        imgName = 'https://siiva-video-public.oss-cn-hangzhou.aliyuncs.com/' + activity_id + '/' + taskId + '_display.jpg'
-        imgList.append(imgName)
-        # 二维码
-        ewmName = 'https://siiva-video.oss-cn-hangzhou.aliyuncs.com/qrcode/' + taskId + '.png'
-        ewmList.append(ewmName)
-    print("图片:", imgList)
-    print("二维码:", ewmList)
+    try:
+        allImg = requests.get("https://iva.siiva.com/admin/task/list?project_id=pr_1539766931&limit=6&state=complete")
+    except:
+        print("出错啦!")
+        mPlay.terminate()
+    else:
+        for i in range(0, 6):
+            activity_id = json.loads(allImg.text).get('list')[i].get('activity_id')
+            taskId = json.loads(allImg.text).get('list')[i].get('task').get('taskId')
+            # 图片
+            imgName = 'https://siiva-video-public.oss-cn-hangzhou.aliyuncs.com/' + activity_id + '/' + taskId + '_display.jpg'
+            imgList.append(imgName)
+            # 二维码
+            ewmName = 'https://siiva-video.oss-cn-hangzhou.aliyuncs.com/qrcode/' + taskId + '.png'
+            ewmList.append(ewmName)
+        print("图片:", imgList)
+        print("二维码:", ewmList)
 
     global imgurl1, imgurl2, imgurl3, imgurl4, imgurl5, imgurl6
     global imgPath1, imgPath2, imgPath3, imgPath4, imgPath5, imgPath6
@@ -95,6 +100,19 @@ ewmW1 = imgWidth - 530
 ewmW2 = imgWidth - 100
 ewmH1 = imgHeight - 530
 ewmH2 = imgHeight - 100
+
+# # 创建中白条,用于写字
+noneCen = np.ones(shape = (500, 8640, 3))
+noneCen = np.uint8(noneCen * 255) #把类型转为与图片一致的unit8类型
+# 写字
+img_PIL = Image.fromarray(cv.cvtColor(noneCen, cv.COLOR_BGR2RGB))
+font = ImageFont.truetype('NotoSansCJK-Black.ttc', 100) #文字字体和大小
+fillColor = (255, 0, 0) #文字颜色
+position = (100, 100) #文字位置
+strTxt = "请扫描二维码"
+draw = ImageDraw.Draw(img_PIL)
+draw.text(position, strTxt, font=font, fill=fillColor)
+txtImg = cv.cvtColor(np.asarray(img_PIL), cv.COLOR_RGB2BGR)
 while True:
     # 分别给所有图片加上二维码
     img1[ewmH1:ewmH2, ewmW1:ewmW2] = ewm1
@@ -106,18 +124,6 @@ while True:
     # 水平叠加
     imgs_1 = np.hstack([img1, img2, img3])
     imgs_2 = np.hstack([img4, img5, img6])
-    # # 创建中白条,用于写字
-    noneCen = np.ones(shape = (500, 8640, 3))
-    noneCen = np.uint8(noneCen * 255) #把类型转为与图片一致的unit8类型
-    # 写字
-    img_PIL = Image.fromarray(cv.cvtColor(noneCen, cv.COLOR_BGR2RGB))
-    font = ImageFont.truetype('NotoSansCJK-Black.ttc', 100) #文字字体和大小
-    fillColor = (255, 0, 0) #文字颜色
-    position = (100, 100) #文字位置
-    strTxt = "请扫描二维码"
-    draw = ImageDraw.Draw(img_PIL)
-    draw.text(position, strTxt, font=font, fill=fillColor)
-    txtImg = cv.cvtColor(np.asarray(img_PIL), cv.COLOR_RGB2BGR)
     # 垂直叠加
     imgs = np.vstack((imgs_1, txtImg, imgs_2)) #目前H = 4820, W = 8640
     cv.imshow("imgWindow", imgs)
@@ -126,7 +132,8 @@ while True:
         break
     # 一定时间后,再次刷新图片
     print("刷新了!!!")
-    mPlay.terminate() #关闭音频
-    playMusic() #重启音频
+    # mPlay.terminate() #关闭音频
+    # playMusic() #重启音频
     muti_imgs() #重新加载图片
+print("出错啦end!!!")
 cv.destroyAllWindows()
