@@ -110,6 +110,7 @@ font = ImageFont.truetype('NotoSansCJK-Black.ttc', 100) #文字字体和大小
 fillColor = (255, 0, 0) #文字颜色
 position = (100, 100) #文字位置
 strTxt = "请扫描二维码"
+strTxt = strTxt.decode('utf8')
 draw = ImageDraw.Draw(img_PIL)
 draw.text(position, strTxt, font=font, fill=fillColor)
 txtImg = cv.cvtColor(np.asarray(img_PIL), cv.COLOR_RGB2BGR)
