@@ -8,7 +8,9 @@ print(sound)
 # 需要pip install playsound
 # 直接运行这个文件,需要:python mp3.py audio_1.mp3
 # 如果在另一个python调用的话:
-# subprocess.Popen(["python","mp3.py","audio_1.mp3"])
+# soundPlay = subprocess.Popen(["python","mp3.py","audio_1.mp3"])
+# 关闭播放的音频
+# soundPlay.terminate()
 
 2. 大小不同的两张图片的叠加
     imH = img.shape[0] #获取img的高
@@ -64,4 +66,34 @@ def capture_and_resize_image():
 		np.zeros(shape = (10, 20, 3))
 	* 创建一个255矩阵(1矩阵*255)
 		np.ones(shape = (10, 20, 3)) * 255
+
+9. 自定义一块区域用来写文字
+    # # 创建中白条,用于写字
+    noneCen = np.ones(shape = (500, 8640, 3))
+    noneCen = np.uint8(noneCen * 255) #把类型转为与图片一致的unit8类型
+    # 写字
+    img_PIL = Image.fromarray(cv.cvtColor(noneCen, cv.COLOR_BGR2RGB))
+    font = ImageFont.truetype('NotoSansCJK-Black.ttc', 100) #文字字体和大小
+    fillColor = (255, 0, 0) #文字颜色
+    position = (100, 100) #文字位置
+    strTxt = "请扫描二维码"
+    draw = ImageDraw.Draw(img_PIL)
+    draw.text(position, strTxt, font=font, fill=fillColor)
+    txtImg = cv.cvtColor(np.asarray(img_PIL), cv.COLOR_RGB2BGR)
+
+10. 获取api图片
+    # 用数组把每组图片装起来
+    global imgList, ewmList
+    imgList = []
+    ewmList = []
+    allImg = requests.get("https://iva.siiva.com/admin/task/list?project_id=pr_1539766931&limit=6&state=complete")
+    for i in range(0, 6):
+        activity_id = json.loads(allImg.text).get('list')[i].get('activity_id')
+        taskId = json.loads(allImg.text).get('list')[i].get('task').get('taskId')
+        # 拼接图片
+        imgName = 'https://siiva-video-public.oss-cn-hangzhou.aliyuncs.com/' + activity_id + '/' + taskId + '_display.jpg'
+        imgList.append(imgName)
+        # 拼接二维码
+        ewmName = 'https://siiva-video.oss-cn-hangzhou.aliyuncs.com/qrcode/' + taskId + '.png'
+        ewmList.append(ewmName)
 	
