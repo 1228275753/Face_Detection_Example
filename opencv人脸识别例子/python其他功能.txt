@@ -97,4 +97,14 @@ def capture_and_resize_image():
         # 拼接二维码
         ewmName = 'https://siiva-video.oss-cn-hangzhou.aliyuncs.com/qrcode/' + taskId + '.png'
         ewmList.append(ewmName)
+
+11. python子线程实现定时器
+	def heart_beat():
+		print time.strftime('%Y-%m-%d %H:%M:%S')
+
+		global exec_count
+		exec_count += 1
+		# 15秒后停止定时器
+		if exec_count < 15:
+		    threading.Timer(1, heart_beat).start()
 	

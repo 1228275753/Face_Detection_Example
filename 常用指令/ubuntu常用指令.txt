@@ -23,3 +23,8 @@
 	cd /usr/bin
 	sudo rm python
 	sudo ln -s /usr/bin/python3.6 /usr/bin/python #python3.6为你电脑最新python版本,切记,此法慎用
+
+* vim 编辑
+	1. vim file.js
+	2. 输入内容(如果无法输入就按'i')
+	3. Esc退出编辑,':wq'关闭文件
