@@ -1,0 +1,4 @@
+* 依赖于serial,才能与arduino通信,安装serial:
+	pip install pyserial
+* 先运行arduino,再运行python
+* follow1: 第一版相机跟随人脸识别,只有左右移动跟随
