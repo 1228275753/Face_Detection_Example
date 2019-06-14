@@ -6,8 +6,11 @@ import serial #python与arduino之间的通信
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 cap = cv2.VideoCapture(1)
-cap.set(3, 640)
-cap.set(4, 480)
+screenW = 640
+halfW = int(screenW/2)
+screenH = 320
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, screenW)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, screenH)
 # /dev/ttyUSB0: 这个名字在arduino工具-串口监视器查看
 # 115200: 波特率,这是比较理想的波特率,不要改
 ser = serial.Serial('/dev/ttyUSB0', 115200)
@@ -26,11 +29,12 @@ while True:
         
         position = x + w/2.0 #脸的中间在x轴的位置
         print(position)
+        wucha = 20 #设置一个偏离正中间的误差
         # 如果脸在左边,输出 a
-        if position < 320:
+        if position < halfW-wucha:
             ser.write(b'a')
         # 脸在右边,输出 b
-        else:
+        if position > halfW+wucha:
             ser.write(b'b')
          
     cv2.imshow('face', img)
